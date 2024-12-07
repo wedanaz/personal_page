@@ -1,4 +1,5 @@
 theme: minima
+  skin: solarized
 title: Welcome
 description: this is just a personal page, a little corner of the internet
 author: Alexander Wehde
