@@ -17,9 +17,21 @@
     <p>
 
     <form id="file-converter">
-      <div class="file-input">
+      <div class="form-group">
         <label for="file-select">Select your File</label>
         <input type="file" id="file-select" name="file-select" accept=".mp4,.gif" required>
+      </div>
+
+      <div class="form-group">
+        <label for="file-type">specify file type</label>
+        <select name="file-type" id="file-type">
+          <option value="gif">GIF</option>
+          <option value="mp4">MP4</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <button type="submit">CONVERT TO BIN</button>
       </div>
 
     </form>
