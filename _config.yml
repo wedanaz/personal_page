@@ -1,4 +1,4 @@
-theme: minima
+minima:
   skin: solarized
 title: Welcome
 description: this is just a personal page, a little corner of the internet
