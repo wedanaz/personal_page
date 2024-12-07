@@ -5,4 +5,4 @@ Hello and welcome to my page, this will be a work in progress. So if you've foun
 
 you can also follow me on [instagram](http://www.instagram.com/landergraph/) or [github](https://www.github.com/wedanaz)
 
-first project: [BIN file converter](alexanderwehde.com/converter)
+first project: [BIN file converter](https:/www.alexanderwehde.com/converter)
