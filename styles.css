@@ -17,3 +17,7 @@ body {
 h1 {
   font-weight: bold;
 }
+
+.header {
+  color: #d2d2d2
+}
