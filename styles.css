@@ -19,5 +19,7 @@ h1 {
 }
 
 .header {
-  color: #d2d2d2
+  background-color: #fdfdfd;
+  color: #d2d2d2;
+  align-items: center;
 }
