@@ -11,16 +11,14 @@ body {
     "Segoe UI Symbol";
   font-size: 16px;
   font-weight: 400;
-  background-color: #fdfdfd;
-  justify-content: flex;
+  background-color: #7b6363;
+
 }
 
 h1 {
-  font-weight: bold;
+  text-align: center;
 }
 
-.header {
-  background-color: #fdfdfd;
-  color: #d2d2d2;
+.form-container {
   text-align: center;
 }
