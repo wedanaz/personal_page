@@ -23,5 +23,8 @@ h1 {
 
   background-color: #dadada;
   padding: 1px;
-  margin-left: auto;
+}
+
+#submit{
+  padding:3px;
 }
