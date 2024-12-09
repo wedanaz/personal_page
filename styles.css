@@ -24,3 +24,7 @@ h1 {
   background-color: #dadada;
   padding: 1px;
 }
+
+label.formcontainer{
+  font-style: italic;
+}
