@@ -1,4 +1,4 @@
-document.getElementById('submit').addEventListener('click', () => {
+document.getElementById('submit').addEventListener('click', async () => {
     const fileInput = document.getElementById('gif-file');
     if (!fileInput.files.length) {
         alert('Please upload a GIF file.');
@@ -8,17 +8,17 @@ document.getElementById('submit').addEventListener('click', () => {
     const file = fileInput.files[0];
     const reader = new FileReader();
 
-    reader.onload = function(event) {
-        // Perform conversion logic (e.g., GIF to BIN transformation)
+    reader.onload = async function(event) {
         const gifData = new Uint8Array(event.target.result);
 
-        // Placeholder logic: just copy GIF data to BIN
-        const binData = gifData; // Replace with actual conversion logic
+        // Decode the GIF file and extract frames
+        const frames = await extractFramesFromGIF(gifData);
 
-        // Create a Blob for the BIN file
+        // Analyze frames and convert to BIN data
+        const binData = convertFramesToBIN(frames);
+
+        // Create a downloadable BIN file
         const binBlob = new Blob([binData], { type: 'application/octet-stream' });
-
-        // Create a download link
         const downloadLink = document.getElementById('download-link');
         const downloadBtn = document.getElementById('download-btn');
         downloadBtn.href = URL.createObjectURL(binBlob);
@@ -27,3 +27,53 @@ document.getElementById('submit').addEventListener('click', () => {
 
     reader.readAsArrayBuffer(file);
 });
+
+// Function to extract frames from GIF
+async function extractFramesFromGIF(gifData) {
+    return new Promise((resolve) => {
+        const gif = new GIF(gifData); // Use a library like omggif or gif.js
+        const frames = [];
+
+        gif.decode((frame) => {
+            // Render each frame onto a canvas
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = gif.width;
+            canvas.height = gif.height;
+
+            ctx.putImageData(frame.imageData, 0, 0);
+
+            // Extract pixel data
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            frames.push(imageData);
+        });
+
+        gif.onComplete(() => {
+            resolve(frames);
+        });
+    });
+}
+
+// Function to convert frames to BIN data
+function convertFramesToBIN(frames) {
+    const binData = [];
+
+    frames.forEach((frame) => {
+        const pixels = frame.data; // Pixel data is a flat array [R, G, B, A, ...]
+        for (let i = 0; i < pixels.length; i += 4) {
+            const r = pixels[i];
+            const g = pixels[i + 1];
+            const b = pixels[i + 2];
+            const a = pixels[i + 3];
+
+            // Example logic: Encode RGB to grayscale
+            const grayscale = Math.round((r + g + b) / 3);
+
+            // Add grayscale value to binary data
+            binData.push(grayscale);
+        }
+    });
+
+    // Return as Uint8Array
+    return new Uint8Array(binData);
+}
