@@ -1,4 +1,4 @@
-document.getElementById('gif-file').addEventListener('click', async () => {
+document.getElementById('convert-button').addEventListener('click', async () => {
     const fileInput = document.getElementById('gif-file');
     if (!fileInput.files.length) {
         alert('Please upload a GIF file.');
