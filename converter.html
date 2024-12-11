@@ -17,35 +17,22 @@
 
   <div class="form-container">
     <h2>please input your files for conversion via this form</h2>
-    <p>currently only GIF and MP4 supported, change resolution size according to your needs / manufacturer guidelines.
+    <p>currently only GIF supported, change resolution size according to your needs / manufacturer guidelines.
     <p>
 
     <form id="file-converter">
       <div class="form-group">
-        <label for="file-select">Select your File</label>
-        <input type="file" id="file-select" name="file-select" accept=".mp4,.gif" required>
+        <label for="gif-file">Select your File</label>
+        <input type="file" id="gif-file" name="file-select" accept="image/gif" required>
       </div>
-
-      <div class="form-group">
-        <label for="file-type">specify file type</label>
-        <select name="file-type" id="file-type">
-          <option value="gif">GIF</option>
-          <option value="mp4">MP4</option>
-        </select>
-      </div>
-      <h2>desired output resolution:</h2>
-      <div class="form-group">
-        <label for="height">Height:
-          <textarea name="height" id="height" cols="8" rows="1" placeholder="300px"></textarea>
-        </label>
-        <label for="width">Width:
-          <textarea name="width" id="width" cols="8" rows="1" placeholder="300px"></textarea>
-        </label>
-      </div>
-      <br><br>
       <div class="form-group">
         <button type="submit" id="submit">CONVERT TO BIN</button>
       </div>
+
+      <div id="download-link" style="display: none;">
+        <a id="download-btn" download="output.bin">Download BIN File</a>
+    </div>
+    <script src="script.js"></script>
 
       
 
